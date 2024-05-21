@@ -7,8 +7,16 @@ userRouter.get('/', (req, res) => {
 
 userRouter.post('/create', (req, res) => {
     const reqBody = req.body;
-    res.send(reqBody);
-    console.log('Date recieved: ', reqBody);
+    const reqValid = true;
+
+    if (reqValid) {
+        // Send to services to create user
+        res.send('User Created');
+    } else {
+        // Send response to indicate issue
+        res.send('User Not Created');
+    }
+    console.log('Date recieved Was: ', reqBody);
 });
 
 module.exports = userRouter;
