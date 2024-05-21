@@ -20,7 +20,7 @@ const userSchema = new Schema({
 });
 
 // Hashing function for safe password storage
-userSchema.pre('save', async (next) => {
+userSchema.pre('save', async function(next) {
     try {
         if (!this.isModified('password')) {
             return next();
