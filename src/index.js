@@ -1,13 +1,16 @@
 const express = require('express');
 const connectToDB = require('./Config/mongoConfig.js');
 const apiRouter = require('./api/routes/api.js');
+const checkApiKey = require('./api/middleware/checkApiKey.js');
 const PORT = 3000;
 
 // Make Express app
 const app = express();
 
-// Parse Json
+// Middleware
 app.use(express.json());
+app.use(checkApiKey);
+
 
 // Attempt connection to db
 connectToDB();
