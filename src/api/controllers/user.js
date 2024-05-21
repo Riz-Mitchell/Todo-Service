@@ -1,4 +1,5 @@
 const express = require('express');
+const userCreate = require('../services/userCreate');
 const userRouter = express.Router();
 
 userRouter.get('/', (req, res) => {
@@ -6,17 +7,8 @@ userRouter.get('/', (req, res) => {
 });
 
 userRouter.post('/create', (req, res) => {
-    const reqBody = req.body;
-    const reqValid = true;
-
-    if (reqValid) {
-        // Send to services to create user
-        res.send('User Created');
-    } else {
-        // Send response to indicate issue
-        res.send('User Not Created');
-    }
-    console.log('Date recieved Was: ', reqBody);
+    // Validate somthing before creating user
+    userCreate(req, res);
 });
 
 module.exports = userRouter;
